@@ -4,10 +4,10 @@ class ListNode(object):
         self.value=value
         self.next=next
 
-def reverse3(node: ListNode):
+def traverse_linkedlist(node: ListNode):
     if node.next:
-        reverse3(node.next)
         print(node.value)
+        reverse3(node.next)
     else:
         print(node.value)
         return
