@@ -11,12 +11,11 @@ class Solution(object):
         :type l2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        if not l1 or not l2:
-            return None
-        if len(l2) > len(l1):
-            for df in range(len(l2) - len(l1)):
-                l1.append(0)
-        elif len(l1) > len(l2):
-            for df in range(len(l1) - len(l2)):
-                l2.append(0)
-        
+        if l1.next or l2.next:
+            if l2.val + l1.val > 10:
+                node = ListNode(0, l1.next)
+                l1.next.val += 1
+                addTwoNumbers(self, l1.next, l2.next)
+            sumNode.val = l1.val + l2.val
+        else:
+            node = ListNode(l2.val + l1.val, None)
