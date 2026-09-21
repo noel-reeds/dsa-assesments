@@ -13,9 +13,18 @@ class Solution(object):
         """
         if l1.next or l2.next:
             if l2.val + l1.val > 10:
-                node = ListNode(0, l1.next)
+                x = l2.val + l1.val
+                node = ListNode(x % 10, l1.next if l1.next else l2.next)
                 l1.next.val += 1
                 addTwoNumbers(self, l1.next, l2.next)
-            sumNode.val = l1.val + l2.val
-        else:
-            node = ListNode(l2.val + l1.val, None)
+            else:
+                node = ListNode(l2.val + l1.val, l1.next if l1.next else l2.next)
+                addTwoNumbers(self, l1.next, l2.next)
+        else: # if each linkedlist has one node.
+            if l2.val + l1.val > 10:
+                x = l2.val + l1.val
+                n2 = ListNode(x % 10, None)
+                n3 = ListNode(1, n2)
+            else:
+                n5 = ListNode(l2.val + l1.val, None)
+        return node
